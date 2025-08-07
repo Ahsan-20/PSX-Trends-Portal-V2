@@ -162,6 +162,7 @@
         </table>
       </div>
     </div>
+    
   </main>
 
   <!-- Footer -->
@@ -276,7 +277,11 @@
     }
     statusFilter.addEventListener('change', applyFilters);
 
-    searchInput.addEventListener('input', applyFilters);
+      let filterDebounce;
+      searchInput.addEventListener('input', () => {
+        clearTimeout(filterDebounce);
+    filterDebounce = setTimeout(applyFilters, 250);
+  });
   </script>
 </body>
 </html>
